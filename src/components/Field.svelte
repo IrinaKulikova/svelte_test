@@ -1,7 +1,8 @@
 <script>
+  import { get } from 'svelte/store'; 
   import Square from "./Square.svelte";
   import Triangle from "./Triangle.svelte";
-  import {figures} from "../stores/figures";
+  import {figures, types} from "../stores/figures";
 </script>
 
 <style>
@@ -17,9 +18,9 @@
 <div class="container">
   <svg viewBox="0 0 480 800">
   {#each $figures as figure (figure.id)}    
-    {#if figure.type =="square"}
+    {#if figure.type == get(types)[1]}
       <Square {figure} />
-    {:else}
+    {:else if figure.type == get(types)[2]}
       <Triangle {figure}/>
     {/if}
     {/each}
