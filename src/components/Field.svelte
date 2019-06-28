@@ -1,5 +1,6 @@
 <script>
-  import Figure from "./Figure.svelte";
+  import Square from "./Square.svelte";
+  import Triangle from "./Triangle.svelte";
   import {figures} from "../stores/figures";
 </script>
 
@@ -15,8 +16,12 @@
 
 <div class="container">
   <svg viewBox="0 0 480 800">
-  {#each $figures as figure (figure.id)}
-      <Figure {figure} />
+  {#each $figures as figure (figure.id)}    
+    {#if figure.type =="square"}
+      <Square {figure} />
+    {:else}
+      <Triangle {figure}/>
+    {/if}
     {/each}
   </svg>
 </div>
